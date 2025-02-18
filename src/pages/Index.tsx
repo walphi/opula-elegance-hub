@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -105,6 +104,38 @@ const Index = () => {
                 Opula represents a balance of luxury, comfort, and modern living, perfect for those seeking a sophisticated yet understated lifestyle.
               </p>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section id="project" className="py-20" style={{ backgroundColor: "#144659" }}>
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-2xl text-sand-100 mb-4">About the Project</h2>
+                <h3 className="font-display text-4xl md:text-5xl text-white mb-6 leading-tight">
+                  AT THE CENTRE OF OPULA IS THOUGHTFUL & <em className="italic">INSPIRED LIVING</em>
+                </h3>
+                <p className="text-sand-200 leading-relaxed">
+                  Opula sets a new benchmark for living standards through its creative design and thoughtful layouts. Opula offers a carefully curated living experience, blending sophistication and practicality. With 192 apartments, including 3 exclusive penthouses and 5 elegant townhouses, the project provides a variety of options tailored to different lifestyles.
+                </p>
+                <p className="text-sand-200 leading-relaxed mt-4">
+                  Residents can enjoy breathtaking views of the ocean and parks, while an infinity pool offers a serene retreat. The development features 109 simplex units and 83 duplexes, ranging from 1 to 4-bedroom layouts, offering the flexibility to suit diverse needs—whether it's the efficiency of a simplex or the spaciousness of a duplex. Opula offers a lifestyle that blends comfort, sophistication and functionality.
+                </p>
+              </motion.div>
+            </div>
+            <div className="relative h-[600px] rounded-lg overflow-hidden">
+              <img 
+                src="/lovable-uploads/702df0d0-5c7e-4bf1-88d6-8b5afc9a4984.png"
+                alt="Opula Building Facade"
+                className="w-full h-full object-cover rounded-lg"
+              />
+            </div>
           </div>
         </div>
       </section>
