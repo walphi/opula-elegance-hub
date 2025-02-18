@@ -23,11 +23,12 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link
-            to="/"
-            className="font-display text-2xl text-primary transition-colors hover:text-primary/80"
-          >
-            OPULA
+          <Link to="/" className="flex items-center">
+            <img 
+              src="https://dhbholding.com/wp-content/uploads/2024/10/OPULA_Logo_Transparent.svg" 
+              alt="Opula Logo" 
+              className="h-8 md:h-10"
+            />
           </Link>
           <div className="hidden md:flex items-center space-x-8">
             <NavLink to="/about">About</NavLink>
