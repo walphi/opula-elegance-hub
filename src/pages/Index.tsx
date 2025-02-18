@@ -131,7 +131,7 @@ const Index = () => {
             </div>
             <div className="relative h-[600px] rounded-lg overflow-hidden">
               <img 
-                src="/lovable-uploads/702df0d0-5c7e-4bf1-88d6-8b5afc9a4984.png"
+                src="/lovable-uploads/9e68857a-7c22-4a77-a0c9-fc521acff0fc.png"
                 alt="Opula Building Facade"
                 className="w-full h-full object-cover rounded-lg"
               />
