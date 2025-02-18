@@ -1,17 +1,41 @@
-
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
 
 const Index = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    unitType: "",
+  });
 
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.play();
     }
   }, []);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "Thank you for your interest",
+      description: "The brochure will be sent to your email shortly.",
+    });
+  };
 
   return (
     <div className="min-h-screen bg-sand-50">
@@ -41,6 +65,27 @@ const Index = () => {
               <p className="text-sand-100 text-lg md:text-xl mb-8">
                 Discover a new living experience in Abu Dhabi's most prestigious waterfront address
               </p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
+                  <p className="text-3xl font-display text-white">200</p>
+                  <p className="text-sand-100 text-sm">Units</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
+                  <p className="text-3xl font-display text-white">15</p>
+                  <p className="text-sand-100 text-sm">Floors</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
+                  <p className="text-3xl font-display text-white">7</p>
+                  <p className="text-sand-100 text-sm">Duplexes</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg cursor-pointer" onClick={() => videoRef.current?.play()}>
+                  <p className="text-xl font-display text-white">Watch</p>
+                  <p className="text-sand-100 text-sm">The Video</p>
+                </div>
+              </div>
+              <p className="text-sand-100 text-lg leading-relaxed">
+                Opula represents a balance of luxury, comfort, and modern living, perfect for those seeking a sophisticated yet understated lifestyle.
+              </p>
             </motion.div>
           </div>
         </div>
@@ -52,7 +97,7 @@ const Index = () => {
             <div>
               <h2 className="font-display text-4xl text-primary mb-6">A NEW LIVING EXPERIENCE</h2>
               <p className="text-primary/80 leading-relaxed">
-                Opula represents a balance of luxury, comfort, and modern living, perfect for those seeking a sophisticated yet understated lifestyle.
+                Opula combines modern architectural design with serene waterfront views for a unique living experience. Its minimalist lines and glass façades invite natural light and blend with the landscape.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -153,6 +198,69 @@ const Index = () => {
               />
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-sand-100">
+        <div className="container mx-auto px-6">
+          <div className="max-w-2xl mx-auto text-center mb-12">
+            <h2 className="font-display text-4xl text-primary mb-4">Download Brochure</h2>
+            <p className="text-primary/80">
+              Complete the form below to receive our detailed project brochure.
+            </p>
+          </div>
+          <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-6">
+            <div className="space-y-2">
+              <Label htmlFor="name">Full Name</Label>
+              <Input
+                id="name"
+                placeholder="Enter your full name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email Address</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="phone">Phone Number</Label>
+              <Input
+                id="phone"
+                placeholder="Enter your phone number"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="unitType">Interested In</Label>
+              <Select
+                onValueChange={(value) => setFormData({ ...formData, unitType: value })}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select unit type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="studio">Studio</SelectItem>
+                  <SelectItem value="1br">1 Bedroom</SelectItem>
+                  <SelectItem value="2br">2 Bedrooms</SelectItem>
+                  <SelectItem value="3br">3 Bedrooms</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <Button type="submit" className="w-full bg-primary text-white hover:bg-primary/90">
+              Download Brochure
+            </Button>
+          </form>
         </div>
       </section>
 
