@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -13,6 +14,11 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Index = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -78,10 +84,22 @@ const Index = () => {
                   <p className="text-3xl font-display text-white">7</p>
                   <p className="text-sand-100 text-sm">Duplexes</p>
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg cursor-pointer" onClick={() => videoRef.current?.play()}>
-                  <p className="text-xl font-display text-white">Watch</p>
-                  <p className="text-sand-100 text-sm">The Video</p>
-                </div>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg cursor-pointer hover:bg-white/20 transition-colors">
+                      <p className="text-xl font-display text-white">Watch</p>
+                      <p className="text-sand-100 text-sm">The Video</p>
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl p-0 bg-black overflow-hidden">
+                    <video
+                      className="w-full aspect-video"
+                      src="https://dhbholding.com/wp-content/uploads/2024/10/DHB_YAS-Bay_4k.mp4"
+                      controls
+                      autoPlay
+                    />
+                  </DialogContent>
+                </Dialog>
               </div>
               <p className="text-sand-100 text-lg leading-relaxed">
                 Opula represents a balance of luxury, comfort, and modern living, perfect for those seeking a sophisticated yet understated lifestyle.
